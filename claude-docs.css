@@ -788,7 +788,7 @@ hr {
 /* 主容器 */
 .md-fences {
     position: relative;
-    margin: 0 !important;
+    margin: 1.15rem 0 !important;
     padding: 2.65rem 0.875rem 0.875rem 0.875rem;
     background-color: var(--pre-bg-color);
     color: #1f2328;
@@ -878,8 +878,9 @@ hr {
 /* ----- 未点击代码块时的语言标签 ----- */
 
 /* 静态常驻的语言标签 */
-.md-fences[lang]:not([lang=""])::before {
-    content: attr(lang);
+.md-fences[lang]:not([lang=""])::before,
+.md-fences[lang=""]::before,
+.md-fences:not([lang])::before {
     position: absolute;
     display: block;
     top: 0px !important;
@@ -896,6 +897,15 @@ hr {
     visibility: visible;
 }
 
+.md-fences[lang]:not([lang=""])::before {
+    content: attr(lang);
+}
+
+.md-fences[lang=""]::before,
+.md-fences:not([lang])::before {
+    content: "txt";
+}
+
 /* 代码内容聚焦时仍保持静态标签，避免和原生输入框切换时闪烁 */
 .md-fences.md-focus[lang]::before {
     opacity: 1 !important;
@@ -904,6 +914,11 @@ hr {
 
 /* 仅在真正编辑语言名时，隐藏静态标签 */
 .md-fences.md-focus:has(.code-tooltip:focus-within)[lang]::before {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.md-fences.md-focus:has(.code-tooltip:focus-within):not([lang])::before {
     opacity: 0 !important;
     visibility: hidden !important;
 }
