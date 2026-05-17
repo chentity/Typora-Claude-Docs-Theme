@@ -789,7 +789,7 @@ hr {
 .md-fences {
     position: relative;
     margin: 1.15rem 0 !important;
-    padding: 2.65rem 0.875rem 0.875rem 0.875rem;
+    padding: 2.55rem 0.875rem 0.875rem 0.875rem;
     background-color: var(--pre-bg-color);
     color: #1f2328;
     border-style: solid;
@@ -797,6 +797,25 @@ hr {
     border-color: var(--pre-border-color);
     border-radius: 0.5rem;
     box-shadow: none !important;
+}
+
+/* 代码块顶部语言栏与正文之间的分割线 */
+.md-fences::after {
+    content: "";
+    position: absolute;
+    top: 31px;
+    left: 0;
+    right: 0;
+    height: 0.5px;
+    background: rgb(31 30 29 / 14%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Typora 插件增强：复制按钮与左上角语言标签水平对齐 */
+#write .fence-enhance {
+    top: 1px !important;
+    right: 12px !important;
 }
 
 /* Mermaid 编辑态：让下方预览面板参与文档流，避免覆盖后续正文 */
@@ -867,8 +886,8 @@ hr {
     border: none !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 12px 0 0 14px !important;
-    line-height: 17px;
+    padding: 7px 0 0 14px !important;
+    line-height: 15px;
     height: auto;
     top: 0px !important;
     bottom: auto !important;
@@ -885,8 +904,8 @@ hr {
     display: block;
     top: 0px !important;
     left: 0px !important;
-    padding: 12px 0 0 14px !important;
-    line-height: 17px !important;
+    padding: 7px 0 0 14px !important;
+    line-height: 15px !important;
     color: var(--pre-inputfont-color) !important;
     font-weight: var(--pre-inputfont-weight) !important;
     font-size: 0.75rem !important;
@@ -930,7 +949,7 @@ hr {
     left: 0px !important;
     bottom: auto !important;
     right: auto !important;
-    padding: 12px 0 0 14px !important;
+    padding: 7px 0 0 14px !important;
     margin: 0 !important;
     height: auto !important;
     border: none !important;
@@ -969,7 +988,7 @@ hr {
     font-weight: var(--pre-inputfont-weight) !important;
     font-size: 0.75rem !important;
     font-family: var(--font-sans) !important;
-    line-height: 17px !important;
+    line-height: 15px !important;
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;

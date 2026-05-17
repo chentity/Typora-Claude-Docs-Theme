@@ -1,0 +1,121 @@
+#write .CodeMirror-scroll {
+    cursor: default;
+}
+
+#write .CodeMirror-lines {
+    cursor: text;
+}
+
+#write .fence-enhance {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    z-index: 8;
+    top: ${this.config.BUTTON_TOP};
+    right: ${this.config.BUTTON_RIGHT};
+    font-size: ${this.config.BUTTON_SIZE};
+    color: ${this.config.BUTTON_COLOR};
+}
+
+.fence-enhance .enhance-btn {
+    cursor: pointer;
+    opacity: ${this.config.BUTTON_OPACITY};
+    padding: 0 ${this.config.BUTTON_PADDING};
+}
+
+.fence-enhance .enhance-btn:hover {
+    opacity: ${this.config.BUTTON_OPACITY_HOVER};
+}
+
+.CodeMirror-line:hover {
+    background-color: ${bgColorWhenHover};
+}
+
+.plugin-fence-enhance-highlight {
+    background-color: ${this.config.HIGHLIGHT_LINE_COLOR} !important;
+}
+
+/* ========================= */
+
+/* 代码块右上角按钮组：与左上角语言标签水平对齐 */
+#write .fence-enhance {
+    top: 4px !important;
+    right: 10px !important;
+    font-size: 16px !important;
+    color: #8b8880 !important;
+    visibility: visible !important;
+}
+
+/* 复制按钮容器：常驻显示 */
+.fence-enhance .enhance-btn.copy-code {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 7px;
+    color: #8b8880;
+    opacity: 0.72 !important;
+    line-height: 0 !important;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition:
+        background-color 0.16s ease,
+        box-shadow 0.16s ease,
+        color 0.16s ease,
+        opacity 0.16s ease;
+}
+
+/* 鼠标悬停时只增加背景和阴影 */
+.fence-enhance .enhance-btn.copy-code:hover {
+    opacity: 1 !important;
+    background-color: #edece7;
+    color: #6f6c66;
+    box-shadow:
+        0 1px 2px rgb(31 30 29 / 6%),
+        inset 0 0 0 1px rgb(31 30 29 / 4%);
+}
+
+/* 隐藏 FontAwesome 原始字符，用 SVG mask 接管图标 */
+.fence-enhance .enhance-btn.copy-code > span {
+    position: absolute;
+    top: calc(50% + 1px);
+    left: calc(50%);
+    display: block;
+    width: 15px !important;
+    height: 15px !important;
+    flex-shrink: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: currentColor;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.fence-enhance .enhance-btn.copy-code > span::before {
+    content: "" !important;
+}
+
+/* 未点击状态：复制图标 */
+.fence-enhance .enhance-btn.copy-code > .fa-clipboard {
+    width: 15px !important;
+    height: 15px !important;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 20 20' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 3.5A2.5 2.5 0 0 1 9.5 1h6A2.5 2.5 0 0 1 18 3.5v6A2.5 2.5 0 0 1 15.5 12H14v1.5A2.5 2.5 0 0 1 11.5 16h-7A2.5 2.5 0 0 1 2 13.5v-7A2.5 2.5 0 0 1 4.5 4H7v-.5ZM8.5 4H11.5A2.5 2.5 0 0 1 14 6.5V10h1.5a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0-.5.5V4Zm-4 2A.5.5 0 0 0 4 6.5v7a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-7Z'%3E%3C/path%3E%3C/svg%3E") center / 15px 15px no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 20 20' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 3.5A2.5 2.5 0 0 1 9.5 1h6A2.5 2.5 0 0 1 18 3.5v6A2.5 2.5 0 0 1 15.5 12H14v1.5A2.5 2.5 0 0 1 11.5 16h-7A2.5 2.5 0 0 1 2 13.5v-7A2.5 2.5 0 0 1 4.5 4H7v-.5ZM8.5 4H11.5A2.5 2.5 0 0 1 14 6.5V10h1.5a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0-.5.5V4Zm-4 2A.5.5 0 0 0 4 6.5v7a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-7Z'%3E%3C/path%3E%3C/svg%3E") center / 15px 15px no-repeat;
+}
+
+/* 点击成功状态：勾选图标 */
+.fence-enhance .enhance-btn.copy-code > .fa-check {
+    width: 15.5px !important;
+    height: 15.5px !important;
+    background: #6f6c66;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 20 20' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.188 5.11a.5.5 0 0 1 .752.626l-.056.084-7.5 9a.5.5 0 0 1-.738.033l-3.5-3.5-.064-.078a.501.501 0 0 1 .693-.693l.078.064 3.113 3.113 7.15-8.58z'%3E%3C/path%3E%3C/svg%3E") center / 15.5px 15.5px no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 20 20' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.188 5.11a.5.5 0 0 1 .752.626l-.056.084-7.5 9a.5.5 0 0 1-.738.033l-3.5-3.5-.064-.078a.501.501 0 0 1 .693-.693l.078.064 3.113 3.113 7.15-8.58z'%3E%3C/path%3E%3C/svg%3E") center / 15.5px 15.5px no-repeat;
+}

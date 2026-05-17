@@ -1,0 +1,14 @@
+[editor_width_slider]
+WIDTH_RATIO = 67
+
+[auto_number]
+ENABLE_OUTLINE = false
+ENABLE_CONTENT = false
+
+[blur]
+ENABLE = false
+
+[fence_enhance]
+ENABLE_INDENT = false
+ENABLE_FOLD = false
+WAIT_RECOVER_INTERVAL = 3000
